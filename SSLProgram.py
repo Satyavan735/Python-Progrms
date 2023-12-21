@@ -1,0 +1,8 @@
+#Implementation of SSl Program in python
+import socket
+import ssl
+hostname='www.python.org'
+context=ssl.create_default_context()
+with socket.create_connection((hostname,443))as sock: #Socket
+    with context.wrap_socket(sock,server_hostname=hostname)as ssock: #ssock: SSL Socket
+        print(ssock.version())
